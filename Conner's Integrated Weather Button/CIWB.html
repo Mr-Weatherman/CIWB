@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+  -- Conner's Integrated Weather Button (C.I.W.B.) | Conner's Weather
+  -- @date 1.04.2023
+  -- @url https://www.connersweather.com/
+  -- Created by Jesse E. Conner
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Conner's Weather | Conner's Integrated Weather Button" />
+    <meta name="keywords" content="Conner's Weather, weather Button, weather, weather forecast, conner, point-based, Jesse, Jesse Conner" />
+    <meta name="description" content="A Button, based on your device's Lat/Lon coordinates, for the point-based weather forecast." />
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Conner's Integrated Weather Button | Conner's Integrated Weather Button"/>
+    <meta property="og:description" content="Conner's Integrated Weather Button - A Button, based on your device's Lat/Lon coordinates, for the point-based weather forecast"/>
+    <meta property="og:site_name" content="Conner's Weather"/>
+    <meta property="og:image" content="https://www.connersweather.com/lib/js/share.png"/>
+    <meta property="og:image:width" content="1500"/>
+    <meta property="og:image:height" content="750"/>
+    <meta property="og:image:alt" content="Conner's Integrated Weather Button" />
+    <meta itemprop="name" content="Conner's Weather" />
+    <meta itemprop="image" content="https://www.connersweather.com/lib/js/share.png" />
+    <title>Conner's Weather | Weather Integrated Weather Radar</title>
+  </head>
+  <body>
+    <button id="CIWB">Conner's Integrated Weather Button (C.I.W.B.)</button>
+    <!-- A Button, based on your device's Lat/Lon coordinates, for the point-based weather forecast-->
+    <script>
+      let baseURL = "https://forecast.weather.gov/MapClick.php?lon=";
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+        let fullURL = baseURL + longitude + "&lat=" + latitude + "#.Y7PJK3bMJPY";
+        let button = document.getElementById("CIWB");
+        button.addEventListener("click", function() {
+          window.location.href = fullURL;
+        });
+      }, function(error) {
+        console.error(error);
+      });
+    </script>
+  </body>
+</html>
+
